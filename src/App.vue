@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1>头条移动端</h1>
     <router-view/>
   </div>
 </template>
