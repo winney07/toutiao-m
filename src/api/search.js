@@ -19,3 +19,28 @@ export const getSearchSuggestions = q => {
       }
     })
 }
+
+  /**
+ * 获取搜索结果
+ */
+
+export const getSearchResult = params => {
+  // console.log(data)
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/search',
+    params
+  })
+}
+
+  /**
+ * 获取用户搜索历史
+ */
+
+export const getSearchHistories = () => {
+  // console.log(data)
+  return request({
+    method: 'GET',
+    url: ' /app/v1_0/search/histories'
+  })
+}

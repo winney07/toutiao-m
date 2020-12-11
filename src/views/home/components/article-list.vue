@@ -60,7 +60,7 @@ export default {
  methods: {
     async onLoad() {
         // 异步更新数据
-        console.log(this.channel.id)
+        // console.log(this.channel.id)
         const { data } = await getArticles({
            channel_id: this.channel.id, // 频道ID
             timestamp: this.timestamp || Date.now(), // 时间藏，请求新的推荐数据传当前的时间藏，请求历史推荐传指定的时间戳,timestamp相当于页码
@@ -68,7 +68,7 @@ export default {
 
         })
         const { results } = data.data
-        console.log(results)
+        // console.log(results)
         this.articles.push(...results)
         // 加载状态结束
         this.loading = false
