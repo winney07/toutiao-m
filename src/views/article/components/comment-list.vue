@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { getArticleComments } from '@/api/comment'
+// import { getArticleComments } from '@/api/comment'
 import commentItem from './comment-item'
 // import request from '@/utils/request'
 
@@ -54,7 +54,7 @@ export default {
  methods: {
       async onLoad () {
         //   1.请求获取数据
-        const { aaa } = await getArticleComments()
+        // const { aaa } = await getArticleComments()
 
         // const aaaa = await request.get({
         //         url: '/app/v1_0/comments',
@@ -66,8 +66,8 @@ export default {
         //         }
         // })
         // console.log(aaaa)
-        console.log('aaa')
-        console.log(aaa)
+        // console.log('aaa')
+        // console.log(aaa)
 
         const data = {
             message: 'OK',
