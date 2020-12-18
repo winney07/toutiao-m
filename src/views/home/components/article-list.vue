@@ -1,6 +1,6 @@
 <!-- 文章列表 -->
 <template>
- <div id="" class="article-list">
+ <div id="" class="article-list" ref="article-list">
      <van-pull-refresh
         v-model="isRefreshLoading"
         :success-text="refreshSuccessTxt"
@@ -31,6 +31,7 @@
 <script>
 import { getArticles } from '@/api/article'
 import ArticleItem from '@/components/article-item'
+import { debounce } from 'lodash'
 
 export default {
  name: 'ArticleList',
@@ -50,13 +51,25 @@ export default {
       finished: false,
       timestamp: null,
       isRefreshLoading: false,
-      refreshSuccessTxt: ''
+      refreshSuccessTxt: '',
+      scrollTop: 0
   }
  },
  computed: {},
  watch: {},
  created() {},
- mounted() {},
+ mounted() {
+     const articleList = this.$refs['article-list']
+     articleList.onscroll = debounce(() => {
+         // 记录上次滚动的高度
+         this.scrollTop = articleList.scrollTop
+     }, 50)
+ },
+ // 组件从缓存中被激活执行
+ activated () {
+     // 回到上次查看的位置
+    this.$refs['article-list'].scrollTop = this.scrollTop
+ },
  methods: {
     async onLoad() {
         // 异步更新数据

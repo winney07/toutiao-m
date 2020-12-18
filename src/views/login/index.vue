@@ -109,9 +109,12 @@ export default {
               Toast.success('登录成功')
 
               this.$store.commit('setUser', data.data)
+              // 清除layout的缓存，让它重新渲染
+              this.$store.commit('removeCachePage', 'LayoutIndex')
 
              // 登录成功，跳转回原来页面
-              this.$router.back()
+            //   this.$router.back()
+              this.$router.push(this.$route.query.redirect || '/')
           } catch (err) {
               console.log(err)
               console.log('登录失败')

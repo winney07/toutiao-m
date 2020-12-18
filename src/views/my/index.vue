@@ -40,7 +40,12 @@
     </van-cell-group>
 
     <div v-else class="not-login">
-        <div @click="$router.push('/login')">
+        <div @click="$router.push({
+            name: 'login',
+            query: {
+                redirect: '/my'
+            }
+        })">
             <img class="mobile" src="./phone.png" alt="">
         </div>
         <div class="text">登录/注册</div>
@@ -62,7 +67,7 @@
     </van-grid>
 
     <van-cell title="消息通知" is-link to="" />
-    <van-cell class="mb-4" title="小智同学" is-link to="" />
+    <van-cell class="mb-4" title="小智同学" is-link to="/user/chat" />
 
     <van-cell
         v-if="user"

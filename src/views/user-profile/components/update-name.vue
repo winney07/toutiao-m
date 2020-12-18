@@ -31,14 +31,14 @@ export default {
  name: 'UpdateName',
  components: {},
  props: {
-     name: {
+     value: {
          type: String,
          required: true
      }
  },
  data () {
   return {
-      localName: this.name
+      localName: this.value
   }
  },
  computed: {},
@@ -59,7 +59,8 @@ export default {
              this.$toast.success('保存成功')
              this.$emit('close')
 
-             this.$emit('update-name', this.localName)
+             this.$emit('input', this.localName)
+            //  this.$emit('update-name', this.localName)
          } catch (err) {
              if (err && err.response && err.response.status === 409) {
                  this.$toast.fail('昵称已存在')
